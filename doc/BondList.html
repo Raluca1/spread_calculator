@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class BondList - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#class-BondList-label-Challenge+-231">Challenge #1</a>
+    <li><a href="#class-BondList-label-Challenge+-232">Challenge #2</a>
+    <li><a href="#class-BondList-label-"></a>
+  </ul>
+</div>
+
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Array
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-read_from_file">#read_from_file</a>
+    
+    <li ><a href="#method-i-spread_to_benchmark">#spread_to_benchmark</a>
+    
+    <li ><a href="#method-i-spread_to_benchmark_to_s">#spread_to_benchmark_to_s</a>
+    
+    <li ><a href="#method-i-spread_to_curve">#spread_to_curve</a>
+    
+    <li ><a href="#method-i-spread_to_curve_to_s">#spread_to_curve_to_s</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-BondList">
+  <h1 id="class-BondList" class="class">
+    class BondList
+  </h1>
+
+  <section class="description">
+    
+<p><code>BondList</code> encapsulates a list of bonds.</p>
+
+<p><code>read_from_file</code> method is used to read bonds from a .csv file
+and populate the list.</p>
+
+<p>Sample of .csv file:</p>
+
+<pre>bond,type,term,yield
+C1,corporate,10.3 years,5.30%
+C2,corporate,15.2 years,8.30%
+G1,government,9.4 years,3.70%
+G2,government,12 years,4.80%
+G3,government,16.3 years,5.50%</pre>
+
+<h3 id="class-BondList-label-Challenge+-231">Challenge #1<span><a href="#class-BondList-label-Challenge+-231">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p><code>spread_to_benchmark</code> calculates the yield spread of each
+corporate bond to its benchmark.  The result is an array of hashes with
+keys <code>:bond</code>, <code>:benchmark</code>,
+<code>:spread_to_benchmark</code>. This result can be converted into a
+string by the utility method <code>spread_to_benchmark_to_s</code>  to be
+printed to stdout or used in testing.</p>
+
+<p>Sample usage:</p>
+
+<pre class="ruby"><span class="ruby-identifier">bonds</span> = <span class="ruby-constant">BondList</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">bonds</span>.<span class="ruby-identifier">read_from_file</span>(<span class="ruby-string">&quot;in1.csv&quot;</span>)
+<span class="ruby-identifier">result</span> = <span class="ruby-identifier">bonds</span>.<span class="ruby-identifier">spread_to_benchmark</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-identifier">bonds</span>.<span class="ruby-identifier">spread_to_benchmark_to_s</span>(<span class="ruby-identifier">result</span>)
+</pre>
+
+<h3 id="class-BondList-label-Challenge+-232">Challenge #2<span><a href="#class-BondList-label-Challenge+-232">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p><code>spread_to_curve</code> calculates the spread to curve for each
+corporate bond. The result is an array of hashes with keys
+<code>:bond</code>, <code>:spread_to_curve</code>. This result can be
+converted into a string by the utility method
+<code>spread_to_curve_to_s</code>  to be printed to stdout or used in
+testing.</p>
+
+<p>Sample usage:</p>
+
+<pre class="ruby"><span class="ruby-identifier">bonds</span> = <span class="ruby-constant">BondList</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">bonds</span>.<span class="ruby-identifier">read_from_file</span>(<span class="ruby-string">&quot;in2.csv&quot;</span>)
+<span class="ruby-identifier">result</span> = <span class="ruby-identifier">bonds</span>.<span class="ruby-identifier">spread_to_curve</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-identifier">bonds</span>.<span class="ruby-identifier">spread_to_curve_to_s</span>(<span class="ruby-identifier">result</span>)
+</pre>
+
+<h3 id="class-BondList-label-"><span><a href="#class-BondList-label-">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Further description of the functionality can be found at: <a
+href="https://gist.github.com/apotapov/3118c573df2a4ac7a93f00cf39ea620a">gist.github.com/apotapov/3118c573df2a4ac7a93f00cf39ea620a</a></p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Raluca Metiu</p>
+</dd></dl>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-read_from_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">read_from_file</span><span
+            class="method-args">(file_name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reads a .csv file, and tries to build an <code>Bond</code> instance from
+each line and append it to this <code>BondList</code>.  If an error is
+encountered trying to build a <code>Bond</code> object, the respective line
+is skipped.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="read_from_file-source">
+            <pre><span class="ruby-comment"># File bond_list.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">read_from_file</span>(<span class="ruby-identifier">file_name</span>)
+  <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Start reading bond list...&quot;</span>
+
+  <span class="ruby-constant">CSV</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">file_name</span>, <span class="ruby-identifier">headers</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">id</span>     = <span class="ruby-identifier">line</span>[<span class="ruby-value">0</span>]
+      <span class="ruby-identifier">type</span>   = <span class="ruby-identifier">line</span>[<span class="ruby-value">1</span>]
+      <span class="ruby-identifier">term</span>   = <span class="ruby-identifier">line</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">chomp</span>(<span class="ruby-string">&#39; years&#39;</span>)
+      <span class="ruby-identifier">_yield</span> = <span class="ruby-identifier">line</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">chomp</span>(<span class="ruby-string">&#39;%&#39;</span>)
+      <span class="ruby-identifier">bond</span> = <span class="ruby-constant">Bond</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">term</span>, <span class="ruby-identifier">_yield</span>
+      <span class="ruby-keyword">self</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">bond</span>
+      <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">bond</span>.<span class="ruby-identifier">inspect</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Bond initialization failed for line: #{line}. This line is skipped.&quot;</span>
+      <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;End reading bond list\n\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-spread_to_benchmark" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">spread_to_benchmark</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Calculates the yield spread of each corporate bond to its benchmark.  The
+result is an array of hashes with keys <code>:bond</code>,
+<code>:benchmark</code>, <code>:spread_to_benchmark</code>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="spread_to_benchmark-source">
+            <pre><span class="ruby-comment"># File bond_list.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">spread_to_benchmark</span>
+  <span class="ruby-identifier">result</span> = []
+  <span class="ruby-identifier">corporate_bonds</span>  = <span class="ruby-identifier">bonds_of_type</span> <span class="ruby-constant">Bond</span><span class="ruby-operator">::</span><span class="ruby-constant">CORPORATE_TYPE</span>
+  <span class="ruby-identifier">government_bonds</span> = <span class="ruby-identifier">bonds_of_type</span> <span class="ruby-constant">Bond</span><span class="ruby-operator">::</span><span class="ruby-constant">GOVERNMENT_TYPE</span>
+
+  <span class="ruby-identifier">corporate_bonds</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cb</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">gb</span> = <span class="ruby-identifier">cb</span>.<span class="ruby-identifier">bond_with_min_term_difference</span>(<span class="ruby-identifier">government_bonds</span>)
+    <span class="ruby-identifier">result_item</span> = {}
+    <span class="ruby-identifier">result_item</span>[<span class="ruby-value">:bond</span>] = <span class="ruby-identifier">cb</span>.<span class="ruby-identifier">id</span>
+    <span class="ruby-identifier">result_item</span>[<span class="ruby-value">:benchmark</span>] = <span class="ruby-identifier">gb</span>.<span class="ruby-identifier">id</span>
+    <span class="ruby-identifier">result_item</span>[<span class="ruby-value">:spread_to_benchmark</span>] = <span class="ruby-identifier">cb</span>.<span class="ruby-identifier">spread_to_benchmark</span>(<span class="ruby-identifier">gb</span>)
+    <span class="ruby-identifier">result</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">result_item</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-spread_to_benchmark_to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">spread_to_benchmark_to_s</span><span
+            class="method-args">(spread_to_benchmark_result)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Utility method to convert the result of <code>spread_to_benchmark</code> to
+string</p>
+          
+          
+
+          
+          <div class="method-source-code" id="spread_to_benchmark_to_s-source">
+            <pre><span class="ruby-comment"># File bond_list.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">spread_to_benchmark_to_s</span>(<span class="ruby-identifier">spread_to_benchmark_result</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-string">&quot;bond,benchmark,spread_to_benchmark\n&quot;</span>
+  <span class="ruby-identifier">spread_to_benchmark_result</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">result</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;#{r[:bond]},#{r[:benchmark]},#{sprintf(&quot;%.2f&quot;, r[:spread_to_benchmark])}%\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-spread_to_curve" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">spread_to_curve</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Calculates the spread to curve for each corporate bond. The result is an
+array of hashes with keys <code>:bond</code>,
+<code>:spread_to_curve</code>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="spread_to_curve-source">
+            <pre><span class="ruby-comment"># File bond_list.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">spread_to_curve</span>
+  <span class="ruby-identifier">result</span> = []
+  <span class="ruby-identifier">corporate_bonds</span>  = <span class="ruby-identifier">bonds_of_type</span>(<span class="ruby-constant">Bond</span><span class="ruby-operator">::</span><span class="ruby-constant">CORPORATE_TYPE</span>)
+  <span class="ruby-identifier">government_bonds</span> = <span class="ruby-identifier">bonds_of_type</span>(<span class="ruby-constant">Bond</span><span class="ruby-operator">::</span><span class="ruby-constant">GOVERNMENT_TYPE</span>).<span class="ruby-identifier">sort_by</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">term</span> }
+
+  <span class="ruby-identifier">corporate_bonds</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cb</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">result_item</span> = {}
+    <span class="ruby-identifier">result_item</span>[<span class="ruby-value">:bond</span>] = <span class="ruby-identifier">cb</span>.<span class="ruby-identifier">id</span>
+    <span class="ruby-identifier">result_item</span>[<span class="ruby-value">:spread_to_curve</span>] = <span class="ruby-identifier">cb</span>.<span class="ruby-identifier">spread_to_curve</span>(<span class="ruby-identifier">government_bonds</span>)
+    <span class="ruby-identifier">result</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">result_item</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-spread_to_curve_to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">spread_to_curve_to_s</span><span
+            class="method-args">(spread_to_curve_result)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Utility method to convert the result of <code>spread_to_curve</code> to
+string</p>
+          
+          
+
+          
+          <div class="method-source-code" id="spread_to_curve_to_s-source">
+            <pre><span class="ruby-comment"># File bond_list.rb, line 120</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">spread_to_curve_to_s</span>(<span class="ruby-identifier">spread_to_curve_result</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-string">&quot;bond,spread_to_curve\n&quot;</span>
+  <span class="ruby-identifier">spread_to_curve_result</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">result</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;#{r[:bond]},#{sprintf(&quot;%.2f&quot;, r[:spread_to_curve])}%\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
