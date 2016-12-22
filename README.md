@@ -1,3 +1,5 @@
+# Spread Calculator
+
 ## Description and technical choices
 `spread_to_benchmark_calculator.rb` and  `spread_to_curve_calculator.rb` scripts take as input a .csv file containig a list of bonds.
 
