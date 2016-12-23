@@ -3,7 +3,7 @@
 ## Description and technical choices
 `spread_to_benchmark_calculator.rb` and  `spread_to_curve_calculator.rb` scripts take as input a .csv file containig a list of bonds.
 
-Sample of .csv file
+Sample .csv file
 
     bond,type,term,yield
     C1,corporate,10.3 years,5.30%
@@ -25,13 +25,13 @@ As the input file is read line by line, the progress is printed to stderr. If an
 Example of return value for `spread_to_benchmark`
 
     [
-    {:bond=>"C1", :benchmark=>"G1", :spread_to_benchmark=>0.16E1}, 
-    {:bond=>"C2", :benchmark=>"G2", :spread_to_benchmark=>0.15E1}, 
-    {:bond=>"C3", :benchmark=>"G3", :spread_to_benchmark=>0.2E1}, 
-    {:bond=>"C4", :benchmark=>"G3", :spread_to_benchmark=>0.29E1}, 
-    {:bond=>"C5", :benchmark=>"G4", :spread_to_benchmark=>0.9E0}, 
-    {:bond=>"C6", :benchmark=>"G5", :spread_to_benchmark=>0.18E1}, 
-    {:bond=>"C7", :benchmark=>"G6", :spread_to_benchmark=>0.25E1}
+        { :bond=>"C1", :benchmark=>"G1", :spread_to_benchmark=>0.16E1 }, 
+        { :bond=>"C2", :benchmark=>"G2", :spread_to_benchmark=>0.15E1 }, 
+        { :bond=>"C3", :benchmark=>"G3", :spread_to_benchmark=>0.2E1 }, 
+        { :bond=>"C4", :benchmark=>"G3", :spread_to_benchmark=>0.29E1 }, 
+        { :bond=>"C5", :benchmark=>"G4", :spread_to_benchmark=>0.9E0 }, 
+        { :bond=>"C6", :benchmark=>"G5", :spread_to_benchmark=>0.18E1 }, 
+        { :bond=>"C7", :benchmark=>"G6", :spread_to_benchmark=>0.25E1 }
     ]
 
 This result can be converted to a nice csv string by utility method `spread_to_benchmark_to_s` to be printed to stdout and in tests.
@@ -48,8 +48,8 @@ This result can be converted to a nice csv string by utility method `spread_to_b
 Example of return value for `spread_to_curve`
 
     [
-    {:bond=>"C1", :spread_to_curve=>0.122E1}, 
-    {:bond=>"C2", :spread_to_curve=>0.298E1}
+        { :bond=>"C1", :spread_to_curve=>0.122E1 }, 
+        { :bond=>"C2", :spread_to_curve=>0.298E1 }
     ]
 
 This result can be converted to a nice csv string by utility method `spread_to_curve_to_s` to be printed to stdout and in tests.
@@ -81,24 +81,26 @@ This result can be converted to a nice csv string by utility method `spread_to_c
 A couple of sample input files can be found in the root directory.
 
 ## Library dependencies
-*   bigdecimal
-*   minitest/autorun
-*   csv
+
+Only ruby standard library has been used (notably, bigdecimal, csv, and minitest/autorun for unit tests)
 
 ## Code documentation
 
-[documentation](./doc/index.html)
+Documentation is available through standard RDoc and can be generated using the command
+
+    rdoc -x /\.csv$/ -x README.md
+
+For convenience, pre-generated docs are included in `doc` folder (open locally `doc/index.html` after checking out the code).
 
 ## How to run tests
     ruby tests.rb
 
-## How to generate RDoc documentation
-    rdoc -x /\.csv$/ -x README.md
-
 ## Given more time, I would
 
-*   do better and more tests
-*   do more validations and error handling for the procedures that do the calculations so the preconditions are not necessary anymore
-*   in case of a more complex problem:
+*   Do better and more tests, improve code coverage
+*   Do more validations and error handling for the procedures that do the calculations so the preconditions are not necessary anymore
+*   In case of a more complex problem:
     + extract utility methods from `BondList`: reading of a csv file, and also the result string convertors
     + extract linear interpolation method from `Bond`
+*   Evaluate the appropriate underlying data types (e.g. BigDecimal, float)
+*   Profile critical paths for performance optimization using the built in Benchmark module
