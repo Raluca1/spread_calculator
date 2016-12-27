@@ -32,10 +32,10 @@ class Bond
     unless [CORPORATE_TYPE, GOVERNMENT_TYPE].include?(type)
       raise ArgumentError.new("Unknown bond type (#{type.inspect})")
     end    
-    unless !!BigDecimal(term) && BigDecimal(term) > 0
+    unless is_decimal?(term) && BigDecimal(term) > 0
       raise ArgumentError.new("Bond term must be positive (#{term.inspect})")
     end
-    unless !!BigDecimal(_yield)
+    unless is_decimal?(_yield)
       raise ArgumentError.new("Bond yield must be a number (#{_yield.inspect}")
     end
     @id    = id
@@ -87,6 +87,9 @@ class Bond
   end
 
 
+  private def is_decimal?(str)
+    (str =~ /^[+-]{0,1}\d+\.{0,1}\d*$/) == 0
+  end
 
   private def term_difference(bond)
     (@term - bond.term).abs
