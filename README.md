@@ -34,7 +34,7 @@ Example of return value for `spread_to_benchmark`
         { :bond=>"C7", :benchmark=>"G6", :spread_to_benchmark=>0.25E1 }
     ]
 
-This result can be converted to a nice csv string by utility method `spread_to_benchmark_to_s` to be printed to stdout and in tests.
+This result can be converted to a nice csv string by utility method `spread_to_benchmark_to_s` to be printed to stdout or used in tests.
 
     bond,benchmark,spread_to_benchmark
     C1,G1,1.60%
@@ -52,7 +52,7 @@ Example of return value for `spread_to_curve`
         { :bond=>"C2", :spread_to_curve=>0.298E1 }
     ]
 
-This result can be converted to a nice csv string by utility method `spread_to_curve_to_s` to be printed to stdout and in tests.
+As above, this result can be converted to a csv string by utility method `spread_to_curve_to_s`.
 
     bond,spread_to_curve
     C1,1.22%
